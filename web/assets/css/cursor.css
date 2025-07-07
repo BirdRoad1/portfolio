@@ -1,0 +1,23 @@
+:root {
+  --cursor-normal-color: rgb(217, 217, 217);
+  --cursor-hover-color: rgb(230, 175, 74);
+}
+
+* {
+  cursor: none;
+}
+
+.fake-cursor {
+  position: absolute;
+  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  background-color: var(--cursor-normal-color);
+  border-radius: 50%;
+  transition: background-color 0.5s, border-radius 0.5s;
+}
+
+.fake-cursor.hover {
+  background-color: var(--cursor-hover-color);
+  border-radius: 40%;
+}
