@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
-import { env } from "../env";
+import { env } from "../env.js";
 import path from "path";
 import { readFileSync } from "fs";
 

@@ -1,4 +1,5 @@
 {
-    "editor.tabSize": 2,
-    "editor.useTabStops": false
+  "editor.tabSize": 2,
+  "editor.useTabStops": false,
+  "typescript.preferences.importModuleSpecifierEnding": "js"
 }

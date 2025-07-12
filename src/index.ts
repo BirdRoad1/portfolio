@@ -1,6 +1,6 @@
 import express from "express";
-import { APIRouter } from "./routes/api-route";
-import "./env";
+import { APIRouter } from "./routes/api-route.js";
+import "./env.js";
 
 const app = express();
 
