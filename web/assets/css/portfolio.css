@@ -28,7 +28,7 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .content-left {
@@ -51,7 +51,9 @@ body {
   z-index: 1;
 }
 
-.content-left h1, .content h2, .content-left div {
+.content-left h1,
+.content h2,
+.content-left div {
   z-index: 2;
 }
 
@@ -178,17 +180,20 @@ body {
   pointer-events: none;
 }
 
-.projects, .certs {
+.projects,
+.certs {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.projects a, .certs a {
+.projects a,
+.certs a {
   color: white;
 }
 
-.project, .cert {
+.project,
+.cert {
   display: flex;
   flex-direction: column;
   background-color: rgb(30, 30, 30);
@@ -197,7 +202,8 @@ body {
   gap: 10px;
 }
 
-.project .project-header, .certs .cert-header {
+.project .project-header,
+.certs .cert-header {
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,22 +1,22 @@
 /**
  * @type {HTMLCanvasElement}
  */
-const canvas = document.getElementById("effect-canvas");
+const canvas = document.getElementById('effect-canvas');
 /**
  * @type {HTMLDivElement}
  */
-const leftContent = document.getElementById("content-left");
+const leftContent = document.getElementById('content-left');
 canvas.width = leftContent.clientWidth;
 canvas.height = leftContent.clientHeight;
 
-window.addEventListener("resize", () => {
+window.addEventListener('resize', () => {
   canvas.width = leftContent.clientWidth;
   canvas.height = leftContent.clientHeight;
 });
 
-const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext('2d');
 // draw points
-ctx.fillStyle = "white";
+ctx.fillStyle = 'white';
 
 function degToRad(deg) {
   return deg * (Math.PI / 180);
@@ -35,7 +35,7 @@ class Point {
   offsetX;
   offsetY;
   radius;
-  color = "#ffffffff";
+  color = '#ffffffff';
   velocityX = 0; // pixels/sec
   velocityY = 0; // pixels/sec
 
@@ -71,32 +71,22 @@ for (let j = 290; j >= 270; j -= 10) {
     let y = radius * radToDeg(Math.sin(degToRad(i)));
 
     let point;
-    // console.log(x, y);
-    // ctx.fillRect(originX + x, originY + y, 1, 1);
     points.push(
       (point = new Point(x, y, radius, i, randomOffset(), randomOffset()))
     );
     if (i % 2 == 0) {
-      point.color = "#ffffffdd";
+      point.color = '#ffffffdd';
     }
   }
 }
-
-let mouseX = 0;
-let mouseY = 0;
-
-document.addEventListener("mousemove", (ev) => {
-  mouseX = ev.clientX;
-  mouseY = ev.clientY;
-});
 
 function anim() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   let originX = canvas.width / 2;
   let originY = canvas.height / 2;
   for (const pt of points) {
-    ctx.fillStyle = "#ffffffff";
-    // ctx.fillStyle = pt.color;
+    ctx.fillStyle = '#ffffffff';
+
     ctx.fillRect(
       originX + pt.anchorX + pt.offsetX,
       originY + pt.anchorY + pt.offsetY,

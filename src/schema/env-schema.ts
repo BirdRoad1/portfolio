@@ -1,5 +1,5 @@
-import z from "zod";
+import z from 'zod';
 
 export const envSchema = z.object({
-  JWT_SECRET: z.string().length(32),
+  JWT_SECRET: z.string().length(32)
 });

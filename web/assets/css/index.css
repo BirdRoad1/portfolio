@@ -24,7 +24,7 @@ body {
   align-items: center;
   background-color: rgb(11, 11, 11);
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   gap: 20px;
 }
 
@@ -44,7 +44,7 @@ body {
   border-radius: 4px;
   color: white;
   text-decoration: none;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
 .btns a.hover {

@@ -20,23 +20,23 @@ let mouseXPercent;
  */
 let mouseYPercent;
 
-let enabled = (localStorage.getItem("cursor-enabled") ?? "true") === "true";
+let enabled = (localStorage.getItem('cursor-enabled') ?? 'true') === 'true';
 
 // Reset cursor when hitting the back button
-window.addEventListener("pageshow", () => {
+window.addEventListener('pageshow', () => {
   mouseXPercent = mouseYPercent = lastX = lastY = undefined;
 });
 
 // Inject style tag into <head>
 async function injectCSS() {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = "/assets/css/cursor.css";
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '/assets/css/cursor.css';
   document.head.appendChild(link);
 
   return new Promise((resolve, reject) => {
-    let func = (success) => {
-      link.removeEventListener("load", func);
+    let func = success => {
+      link.removeEventListener('load', func);
       if (success) {
         resolve();
       } else {
@@ -44,24 +44,24 @@ async function injectCSS() {
       }
     };
 
-    link.addEventListener("load", () => func(true));
-    link.addEventListener("error", () => func(false));
+    link.addEventListener('load', () => func(true));
+    link.addEventListener('error', () => func(false));
   });
 }
 
 // Create cursor toggle menu
 function createCursorMenu() {
-  const div = document.createElement("div");
-  div.classList.add("cursor-toggle-section");
-  const txt = document.createElement("a");
-  txt.classList.add("cursor-toggle-text");
-  txt.href = "/assets/js/cursor.js";
-  txt.target = "_blank";
-  txt.textContent = "Fancy Cursor";
+  const div = document.createElement('div');
+  div.classList.add('cursor-toggle-section');
+  const txt = document.createElement('a');
+  txt.classList.add('cursor-toggle-text');
+  txt.href = '/assets/js/cursor.js';
+  txt.target = '_blank';
+  txt.textContent = 'Fancy Cursor';
   div.appendChild(txt);
-  const btn = document.createElement("button");
-  btn.classList.add("cursor-toggle-btn", "hoverable");
-  btn.id = "cursor-toggle-btn";
+  const btn = document.createElement('button');
+  btn.classList.add('cursor-toggle-btn', 'hoverable');
+  btn.id = 'cursor-toggle-btn';
   div.appendChild(btn);
   document.body.prepend(div);
 
@@ -82,7 +82,7 @@ function getMousePos() {
  */
 function checkBtnsHover(cursor, cursorX, cursorY) {
   let hovering = false;
-  for (const elem of document.querySelectorAll(".hoverable")) {
+  for (const elem of document.querySelectorAll('.hoverable')) {
     const rect = elem.getBoundingClientRect();
     if (
       cursorX >= rect.x &&
@@ -90,16 +90,16 @@ function checkBtnsHover(cursor, cursorX, cursorY) {
       cursorY >= rect.y &&
       cursorY <= rect.y + rect.height
     ) {
-      cursor.classList.add("hover");
-      elem.classList.add("hover");
+      cursor.classList.add('hover');
+      elem.classList.add('hover');
       hovering = true;
     } else {
-      elem.classList.remove("hover");
+      elem.classList.remove('hover');
     }
   }
 
   if (!hovering) {
-    cursor.classList.remove("hover");
+    cursor.classList.remove('hover');
   }
 }
 
@@ -111,7 +111,7 @@ function checkBtnsHover(cursor, cursorX, cursorY) {
 function checkTextHover(cursor, cursorX, cursorY) {
   if (!enabled) return;
   let hovering = false;
-  for (const elem of document.querySelectorAll(".text")) {
+  for (const elem of document.querySelectorAll('.text')) {
     const rect = elem.getBoundingClientRect();
     if (
       cursorX >= rect.x &&
@@ -119,14 +119,14 @@ function checkTextHover(cursor, cursorX, cursorY) {
       cursorY >= rect.y &&
       cursorY <= rect.y + rect.height
     ) {
-      cursor.classList.add("caret");
+      cursor.classList.add('caret');
       hovering = true;
       break;
     }
   }
 
   if (!hovering) {
-    cursor.classList.remove("caret");
+    cursor.classList.remove('caret');
   }
 }
 
@@ -138,8 +138,8 @@ function checkTextHover(cursor, cursorX, cursorY) {
  */
 function anim(self, cursor) {
   if (!enabled || mouseXPercent === undefined || mouseYPercent === undefined) {
-    cursor.classList.remove("visible");
-    document.body.classList.remove("cursor-visible");
+    cursor.classList.remove('visible');
+    document.body.classList.remove('cursor-visible');
 
     if (enabled) {
       requestAnimationFrame(self);
@@ -148,8 +148,8 @@ function anim(self, cursor) {
     return;
   }
 
-  document.body.classList.add("cursor-visible");
-  cursor.classList.add("visible");
+  document.body.classList.add('cursor-visible');
+  cursor.classList.add('visible');
 
   let { mouseX, mouseY } = getMousePos();
 
@@ -162,8 +162,8 @@ function anim(self, cursor) {
   lastX = lerpX;
   lastY = lerpY;
 
-  cursor.style.left = lerpX + "px";
-  cursor.style.top = lerpY + "px";
+  cursor.style.left = lerpX + 'px';
+  cursor.style.top = lerpY + 'px';
 
   checkBtnsHover(cursor, lerpX, lerpY);
   checkTextHover(cursor, lerpX, lerpY);
@@ -177,22 +177,22 @@ function anim(self, cursor) {
  * @param {HTMLButtonElement} cursorToggle
  */
 function updateCursorState(cursor, cursorToggle) {
-  cursorToggle.textContent = enabled ? "On" : "Off";
+  cursorToggle.textContent = enabled ? 'On' : 'Off';
   if (enabled) {
-    localStorage.setItem("cursor-enabled", "true");
-    document.body.classList.add("cursor-enabled");
+    localStorage.setItem('cursor-enabled', 'true');
+    document.body.classList.add('cursor-enabled');
     const func = () => anim(func, cursor);
     requestAnimationFrame(func);
   } else {
-    localStorage.setItem("cursor-enabled", "false");
-    document.body.classList.remove("cursor-enabled");
+    localStorage.setItem('cursor-enabled', 'false');
+    document.body.classList.remove('cursor-enabled');
   }
 }
 
 function createCursor() {
-  const fakeCursor = document.createElement("div");
-  fakeCursor.id = "fake-cursor";
-  fakeCursor.classList.add("fake-cursor");
+  const fakeCursor = document.createElement('div');
+  fakeCursor.id = 'fake-cursor';
+  fakeCursor.classList.add('fake-cursor');
   document.body.appendChild(fakeCursor);
 
   return fakeCursor;
@@ -203,19 +203,19 @@ function init() {
   const cursor = createCursor();
 
   const cursorToggle = createCursorMenu();
-  cursorToggle.addEventListener("click", () => {
+  cursorToggle.addEventListener('click', () => {
     enabled = !enabled;
     updateCursorState(cursor, cursorToggle);
   });
 
   // Maintain cursor position on resize
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     lastX = mouseXPercent * document.body.clientWidth;
     lastY = mouseYPercent * document.body.clientHeight;
   });
 
   // Update mouse position when moved
-  document.addEventListener("mousemove", (ev) => {
+  document.addEventListener('mousemove', ev => {
     mouseXPercent = ev.pageX / document.body.clientWidth;
     mouseYPercent = ev.pageY / document.body.clientHeight;
   });
