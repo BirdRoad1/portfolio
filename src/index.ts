@@ -4,7 +4,11 @@ import "./env";
 
 const app = express();
 
-app.use(express.static("web/"));
+app.use(
+  express.static("web/", {
+    extensions: ["html"],
+  })
+);
 
 app.use("/api", APIRouter);
 

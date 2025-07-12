@@ -29,28 +29,6 @@ body {
   gap: 20px;
 }
 
-.btns {
-  display: flex;
-  gap: 15px;
-}
-
-.btns a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 40px;
-  background-color: rgb(21, 21, 21);
-  border: 1px solid rgb(172, 172, 172);
-  border-radius: 4px;
-  color: white;
-  text-decoration: none;
-}
-
-.btns a.hover {
-  background-color: rgb(42, 42, 42);
-}
-
 iframe {
   width: 100vw;
   height: 100vh;

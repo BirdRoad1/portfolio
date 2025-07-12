@@ -40,7 +40,7 @@ async function getResumeData(token) {
 /**
  * @type {HTMLSpanElement}
  */
-const counter = document.getElementById("counter");
+const statusText = document.getElementById("status-text");
 /**
  * @type {HTMLDivElement}
  */
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const { token, delay } = data;
     if (token != null) {
       let timeRemaining = delay;
-      counter.textContent = delay;
+      statusText.textContent = `Redirecting in ${timeRemaining} seconds...`;
 
       let interval = setInterval(() => {
         timeRemaining--;
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           clearInterval(interval);
           return;
         }
-        counter.textContent = timeRemaining;
+        statusText.textContent = `Redirecting in ${timeRemaining} seconds...`;
       }, 1000);
 
       setTimeout(async () => {
@@ -72,8 +72,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       }, delay * 1000 + 500);
     }
   } else {
-    counter.textContent = "0";
+    statusText.textContent = `Downloading pdf...`;
     const data = await getResumeData(token);
+    console.log('data:',data)
     if (!data) {
       location.search = "";
       return;

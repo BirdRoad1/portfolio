@@ -3,21 +3,82 @@
   --cursor-hover-color: rgb(230, 175, 74);
 }
 
-* {
+body.cursor-enabled.cursor-visible * {
   cursor: none;
 }
 
 .fake-cursor {
+  display: block;
+  position: fixed;
+  opacity: 0;
+}
+
+.fake-cursor.visible {
+  opacity: 1;
   position: absolute;
   pointer-events: none;
   width: 14px;
   height: 14px;
   background-color: var(--cursor-normal-color);
   border-radius: 50%;
-  transition: background-color 0.5s, border-radius 0.5s;
+  transition: background-color 0.5s, border-radius 0.5s, width 0.5s, height 0.5s,
+    opacity 0.8s;
+  transform: translate(-50%, -50%);
 }
 
 .fake-cursor.hover {
   background-color: var(--cursor-hover-color);
   border-radius: 40%;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 50%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.fake-cursor.caret {
+  height: 30px;
+  width: 5px;
+  border-radius: 3px;
+  background-color: rgb(95, 128, 201);
+  animation: blink 0.8s linear infinite alternate;
+}
+
+.cursor-toggle-section {
+  display: flex;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  gap: 10px;
+  background-color: rgb(39, 39, 39);
+  padding: 10px;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  opacity: 50%;
+  transition: opacity 1s;
+}
+
+.cursor-toggle-text {
+  color: white;
+  text-decoration: none;
+}
+
+.cursor-toggle-section:hover {
+  opacity: 100%;
+}
+
+.cursor-toggle-btn {
+  background-color: black;
+  border: 0;
+  color: white;
+  width: 40px;
+  height: 28px;
+  border-radius: 4px;
 }

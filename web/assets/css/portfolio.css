@@ -1,0 +1,214 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: rgb(11, 11, 11);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.name {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.desc {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+.content-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(5, 5, 5);
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.effect-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.content-left h1, .content h2, .content-left div {
+  z-index: 2;
+}
+
+.content-right {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px;
+  overflow: scroll;
+}
+
+.content-right h1 {
+  font-size: 35px;
+}
+
+.content > .content-left,
+.content > .content-right {
+  width: 50vw;
+}
+
+.btns {
+  display: flex;
+  gap: 15px;
+}
+
+.btns a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(21, 21, 21);
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btns a.hover {
+  background-color: rgb(42, 42, 42);
+}
+
+.programming-languages {
+  display: flex;
+  width: 100%;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.programming-languages p {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: rgb(41, 41, 150);
+}
+
+.experience-technologies {
+  display: flex;
+  gap: 5px;
+}
+
+.experience-technologies p {
+  display: block;
+  height: fit-content;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: rgb(41, 41, 150);
+}
+
+.experiences {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 500px;
+  background-color: rgb(30, 30, 30);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@keyframes pulsing {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 30%;
+  }
+}
+
+.scroll-down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 50px;
+  right: 25vw;
+  background-color: rgba(0, 0, 0, 0.631);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  animation: pulsing 1.5s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.projects, .certs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.projects a, .certs a {
+  color: white;
+}
+
+.project, .cert {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(30, 30, 30);
+  border-radius: 4px;
+  padding: 20px;
+  gap: 10px;
+}
+
+.project .project-header, .certs .cert-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subtitle {
+  color: rgb(235, 235, 235);
+}
+
+.certifications {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
