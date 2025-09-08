@@ -2,7 +2,7 @@
  * A self-contained and smooth cursor replacement
  */
 
-const lerpFactor = 0.1;
+const lerpFactor = 0.15;
 /**
  * @type {number | undefined}
  */
