@@ -4,7 +4,7 @@
   "description": "My portfolio website",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist/ && tsc && cp -r private web dist/",
+    "build": "rm -rf dist/ && tsc && cp -r package.json private web dist/",
     "dev": "tsx --watch src/index.ts",
     "lint": "eslint ."
   },
